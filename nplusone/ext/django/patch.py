@@ -218,8 +218,8 @@ def parse_forward_many_to_one_get(args, kwargs, context):
     descriptor, instance, _ = args
     if instance is None:
         return None
-    field, model = parse_reverse_field(descriptor.field)
-    return field, model, [to_key(instance)]
+    model, field = parse_reverse_field(descriptor.field)
+    return model, field, [to_key(instance)]
 
 
 ForwardManyToOneDescriptor.__get__ = signals.signalify(
